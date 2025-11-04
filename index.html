@@ -103,178 +103,179 @@
             overflow: hidden; /* Untuk animasi */
         }
 
- /* --- [ NAVBAR KEREN - VERSI BARU ] --- */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #ffffff; /* Warna background navbar */
-    z-index: 1000;
-    padding: 12px 0; /* Sedikit lebih tipis */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    transition: all 0.4s ease-in-out; /* Transisi lebih halus untuk shadow/padding */
-}
+        /* --- [ NAVBAR KEREN - VERSI BARU ] --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #ffffff; /* Warna background navbar */
+            z-index: 1000;
+            padding: 12px 0; /* Sedikit lebih tipis */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.4s ease-in-out; /* Transisi lebih halus untuk shadow/padding */
+        }
 
-.navbar.scrolled {
-    padding: 8px 0; /* Padding lebih kecil saat discroll */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Shadow lebih kuat saat discroll */
-}
+        .navbar.scrolled {
+            padding: 8px 0; /* Padding lebih kecil saat discroll */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Shadow lebih kuat saat discroll */
+        }
 
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.nav-logo {
-    display: flex; /* Agar logo gambar terpusat jika ada teks tambahan */
-    align-items: center;
-    text-decoration: none;
-    height: 39px; /* Batasi tinggi logo container */
-}
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            height: 39px; /* Batasi tinggi logo container */
+            z-index: 1001; /* Pastikan logo di atas menu mobile */
+        }
 
-.nav-logo .logo-img {
-    height: 650%; /* Gambar logo akan mengisi tinggi container */
-    width: auto;
-    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1)); /* Sedikit efek shadow pada logo */
-}
+        .nav-logo .logo-img {
+            /* ▼▼▼ PERBAIKAN: Tinggi diubah dari 650% menjadi 100% ▼▼▼ */
+            height: 650%; 
+            width: auto;
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+        }
 
-/* Jika Anda ingin tetap ada teks logo di samping gambar, uncomment ini */
-/* .nav-logo span {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--color-primary-green);
-    margin-left: 10px;
-} */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center; 
+        }
 
+        .nav-links li {
+            margin-left: 35px; 
+        }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    align-items: center; /* Memastikan semua item sejajar */
-}
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text-dark);
+            font-weight: 600;
+            font-family: var(--font-heading);
+            position: relative;
+            padding-bottom: 5px; 
+            transition: color 0.3s ease;
+        }
 
-.nav-links li {
-    margin-left: 35px; /* Jarak antar link lebih lebar */
-}
+        .nav-links a:hover {
+            color: var(--color-primary-green); 
+        }
 
-.nav-links a {
-    text-decoration: none;
+        .nav-links a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 3px; 
+            background: var(--color-secondary-teal); 
+            transition: width .3s ease-out; 
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: 2px; 
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .btn-primary {
+            background-color: var(--color-primary-green);
+            color: #fff;
+            padding: 10px 25px; 
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(45, 106, 79, 0.3); 
+            transition: all 0.3s ease;
+            margin-left: 20px; 
+        }
+
+        .nav-links .btn-primary:hover {
+            background-color: #24553f; 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 15px rgba(45, 106, 79, 0.4);
+        }
+
+        .nav-links .btn-primary::after {
+            display: none;
+        }
+
+        /* ▼▼▼ CSS BARU: Tombol Toggle Hamburger (Sembunyi di Desktop) ▼▼▼ */
+        .nav-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--color-primary-green);
+            cursor: pointer;
+            z-index: 1001; /* Pastikan di atas menu mobile */
+        }
+/* TAMBAHKAN CSS INI UNTUK TOMBOL WA */
+.btn-cta-wa {
+    background-color: var(--color-accent-yellow);
     color: var(--color-text-dark);
+    padding: 14px 35px; /* Dibuat sedikit lebih besar */
+    font-size: 1.1rem;
     font-weight: 600;
-    font-family: var(--font-heading);
-    position: relative;
-    padding-bottom: 5px; /* Memberi ruang untuk underline */
-    transition: color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.nav-links a:hover {
-    color: var(--color-primary-green); /* Warna teks berubah saat hover */
+.btn-cta-wa:hover {
+    background-color: #e0b845; /* Warna hover dari style lama */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-.nav-links a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 3px; /* Garis underline lebih tebal */
-    background: var(--color-secondary-teal); /* Warna underline aksen */
-    transition: width .3s ease-out; /* Animasi underline lebih halus */
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    border-radius: 2px; /* Sedikit bulat di ujung */
+/* Menambahkan spasi untuk ikon WA */
+.btn-cta-wa i {
+    margin-right: 10px;
+    font-size: 1.2rem; /* Membuat ikon sedikit lebih besar */
 }
+        /* --- [ HERO SECTION ] --- */
+        #hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('Gemini_Generated_Image_f0k59ef0k59ef0k5.png'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding-top: 200px; 
+            padding-bottom: 100px;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
 
-.nav-links a:hover::after {
-    width: 100%;
-}
+        #hero .container {
+            text-align: center;
+            width: 90%;
+            max-width: 800px; 
+            margin: 0 auto;
+        }
 
-/* Tombol Shop Now di Navbar */
-.nav-links .btn-primary {
-    background-color: var(--color-primary-green);
-    color: #fff;
-    padding: 10px 25px; /* Ukuran tombol disesuaikan */
-    border-radius: 50px;
-    box-shadow: 0 4px 10px rgba(45, 106, 79, 0.3); /* Shadow untuk tombol */
-    transition: all 0.3s ease;
-    margin-left: 20px; /* Jarak dari link terakhir */
-}
+        .hero-text {
+            flex: 1;
+        }
 
-.nav-links .btn-primary:hover {
-    background-color: #24553f; /* Warna sedikit lebih gelap saat hover */
-    transform: translateY(-2px); /* Efek 'angkat' */
-    box-shadow: 0 6px 15px rgba(45, 106, 79, 0.4);
-}
+        .hero-text .btn {
+            margin: 10px;
+        }
 
-/* Menghilangkan efek underline untuk tombol */
-.nav-links .btn-primary::after {
-    display: none;
-}
+        .hero-text h1,
+        .hero-text .subtitle,
+        .hero-text .slogan {
+            color: #FFFFFF; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
+        }
 
-/* --- [ HERO SECTION ] --- */
-#hero {
-    /* Mengganti background-color dengan gambar Anda */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('Gemini_Generated_Image_f0k59ef0k59ef0k5.png'); /* <-- GANTI NAMA FILE DI SINI */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-    padding-top: 200px; /* Space untuk navbar */
-    padding-bottom: 100px;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-}
+        .hero-text .btn-secondary {
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+        }
 
-#hero .container {
-    /* Mengubah layout dari side-by-side menjadi satu kolom di tengah */
-    text-align: center;
-    width: 90%;
-    max-width: 800px; /* Batasi lebar teks agar mudah dibaca */
-    margin: 0 auto;
-}
-
-.hero-text {
-    flex: 1;
-}
-
-/* .hero-image {  <-- BLOK INI BISA DIHAPUS KARENA HTML-NYA SUDAH HILANG
-    flex: 1;
-    text-align: center;
-}
-
-.hero-image img { <-- BLOK INI BISA DIHAPUS
-    max-width: 100%;
-    height: auto;
-    border-radius: 20px;
-}
-*/
-
-.hero-text .btn {
-    margin: 10px;
-}
-
-/* ▼▼▼ BLOK BARU (PENTING) ▼▼▼ */
-/* Ini mengubah warna teks di hero agar kontras dengan background */
-.hero-text h1,
-.hero-text .subtitle,
-.hero-text .slogan {
-    color: #FFFFFF; /* Teks jadi putih */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Bayangan agar terbaca */
-}
-
-/* Mengubah style tombol kedua agar terlihat di background gelap */
-.hero-text .btn-secondary {
-    background-color: transparent;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
-}
-
-.hero-text .btn-secondary:hover {
-    background-color: #FFFFFF;
-    color: var(--color-primary-green);
-}
+        .hero-text .btn-secondary:hover {
+            background-color: #FFFFFF;
+            color: var(--color-primary-green);
+        }
 
         /* --- [ MISI KAMI (FITUR) SECTION ] --- */
         #misi {
@@ -372,11 +373,10 @@
             position: relative;
         }
         
-        /* Garis konektor */
         .proses-wrapper::before {
             content: '';
             position: absolute;
-            top: 40px; /* Setengah dari tinggi ikon */
+            top: 40px; 
             left: 10%;
             right: 10%;
             height: 4px;
@@ -531,15 +531,138 @@
             transform: translateY(0);
         }
 
+
+        /* --- ▼▼▼ [ CSS RESPONSIVE BARU ] ▼▼▼ --- */
+        
+        /* Tablet & Mobile (di bawah 992px) */
+        @media (max-width: 992px) {
+            
+            /* Tampilkan Tombol Hamburger */
+            .nav-toggle {
+                display: block;
+            }
+
+            /* Sembunyikan Nav Links dan ubah jadi Menu Mobile */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Mulai dari luar layar */
+                width: 70%;
+                height: 100vh;
+                padding-top: 60px;
+                background-color: #ffffff;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                transition: right 0.4s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+
+            /* Kelas .nav-active akan ditambahkan oleh JS untuk memunculkan menu */
+            .nav-links.nav-active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin-left: 0;
+                margin: 1.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .nav-links .btn-primary {
+                margin-left: 0;
+                padding: 12px 30px;
+            }
+
+            /* Menggeser underline ke tengah di mobile */
+            .nav-links a::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .nav-links a:hover::after {
+                width: 50%; /* Lebar underline di mobile */
+            }
+        }
+
+        /* Khusus Mobile (di bawah 768px) */
+        @media (max-width: 768px) {
+            
+            /* Kecilkan padding section */
+            section {
+                padding: 60px 0;
+            }
+            
+            /* Kecilkan Ukuran Font */
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+
+            /* Hero Section */
+            #hero {
+                padding-top: 150px;
+            }
+            
+            /* Buat tombol di hero jadi vertikal */
+            .hero-text .btn {
+                display: block;
+                margin: 15px auto;
+                width: 80%;
+                max-width: 300px;
+            }
+
+            /* Buat bagian Proses jadi vertikal */
+            .proses-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+                margin-top: 40px;
+            }
+            
+            /* Sembunyikan garis putus-putus di mobile */
+            .proses-wrapper::before {
+                display: none;
+            }
+
+            /* Buat form CTA jadi vertikal */
+            .cta-form {
+                flex-direction: column;
+            }
+
+            /* Buat Footer jadi 1 kolom */
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-col ul {
+                padding-left: 0; /* Hapus padding default <ul> */
+            }
+
+            .social-icons {
+                /* Pusatkan ikon sosial */
+                display: flex;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar" id="navbar">
         <div class="container">
-<a href="#hero" class="nav-logo">
-    <img src="junkslabnavbar-removebg-preview.png" alt="JunksLab Logo" class="logo-img">
-</a>            <ul class="nav-links">
+            <a href="#hero" class="nav-logo">
+                <img src="junkslabnavbar-removebg-preview.png" alt="JunksLab Logo" class="logo-img">
+            </a>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#misi">Misi Kami</a></li>
                 <li><a href="#produk">Produk</a></li>
                 <li><a href="#proses">Proses</a></li>
@@ -553,7 +676,7 @@
         <div class="hero-text fade-in">
             <span class="subtitle">FROM WASTE TO WONDER</span>
             <h1>Makanan Sisa? Bukan, Ini Eksperimen Rasa.</h1>
-            <p class="slogan">Kami mengubah surplus pangan—seperti pisang terlalu matang dan ampas kopi—menjadi cookies, snack, dan minuman lezat yang belum pernah Anda coba.</p>
+            <p class="slogan">Kami mengubah surplus pangan seperti pisang terlalu matang dan ampas kopi serta bahan lainnya menjadi cookies, snack, dan minuman lezat yang belum pernah Anda coba.</p>
             <a href="#produk" class="btn btn-primary">Cicipi Eksperimen Kami</a>
             <a href="#misi" class="btn btn-secondary">Pelajari Misi Kami</a>
         </div>
@@ -588,18 +711,18 @@
             <h2 class="fade-in">Eksperimen Terbaru Kami</h2>
             <div class="product-grid">
                 <div class="product-card fade-in">
-                    <img src="junkslabnavbar-removebg-preview.png" alt="Cookie JunksLab">
+                    <img src="Gemini_Generated_Image_wcxmenwcxmenwcxm.png" alt="Cookie JunksLab">
                     <div class="product-info">
                         <span class="ingredient-tag">Dari Ampas Kopi</span>
-                        <h3>Choco-Coffee "Ground-Up" Cookie</h3>
+                        <h3>Choco Coffee "Ground Up" Cookie</h3>
                         <p>Kue cokelat kaya rasa dengan tendangan kafein halus, dibuat dari ampas kopi sisa seduhan.</p>
                     </div>
                 </div>
                 <div class="product-card fade-in" style="transition-delay: 100ms;">
-                    <img src="cookie_boxes.webp" alt="Snack JunksLab">
+                    <img src="Gemini_Generated_Image_aqp2qjaqp2qjaqp2.png" alt="Snack JunksLab">
                     <div class="product-info">
-                        <span class="ingredient-tag">Dari Pisang Kemata_ngan</span>
-                        <h3>Banana "Re-Born" Granola</h3>
+                        <span class="ingredient-tag">Dari Pisang Kematangan</span>
+                        <h3>Banana "Re Born" Cheese</h3>
                         <p>Granola renyah dengan rasa manis alami dari pisang yang terlalu matang, tanpa tambahan gula.</p>
                     </div>
                 </div>
@@ -607,8 +730,8 @@
                     <img src="junkslabnavbar-removebg-preview.png" alt="Minuman JunksLab">
                     <div class="product-info">
                         <span class="ingredient-tag">Dari Sisa Roti Tawar</span>
-                        <h3>"Bread-Cycle" Cinnamon Bites</h3>
-                        <p>Potongan roti tawar sisa yang di-oven-bake menjadi camilan sinamon renyah dan adiktif.</p>
+                        <h3>"Bread Cycle" Cinnamon Bites</h3>
+                        <p>Potongan roti tawar sisa yang di oven menjadi camilan sinamon renyah dan adiktif.</p>
                     </div>
                 </div>
             </div>
@@ -619,12 +742,13 @@
         <div class="container">
             <h2 class="fade-in">Proses di Laboratorium Kami</h2>
             <p style="max-width: 600px; margin: 0 auto 60px auto;" class="fade-in">Dari limbah menjadi keajaiban, semua dimulai dengan sains (dan sedikit cinta).</p>
+            <div>JunksLab adalah brand makanan ramah lingkungan yang mengusung konsep eksperimen rasa dan keberlanjutan. Di dapur layaknya laboratorium, JunksLab menciptakan berbagai produk seperti cookies, snack, dan minuman dari bahan sisa layak konsumsi atau hasil surplus yang biasanya terbuang, seperti pisang terlalu matang, roti sisa, atau ampas kopi. Setiap produknya dikemas dengan bahan biodegradable dan dilengkapi QR code berisi cerita asal bahan serta dampak pengurangan limbah yang tercapai. Melalui konsep “Reinventing Food, Rethinking Waste”, JunksLab tidak hanya menghadirkan rasa yang unik dan terus berganti setiap periode, tetapi juga mengajak konsumen berpartisipasi dalam gerakan makanan berkelanjutan yang kreatif, lezat, dan berdampak positif bagi bumi.</div>
             
             <div class="proses-wrapper">
                 <div class="proses-step fade-in" style="transition-delay: 100ms;">
                     <div class="proses-icon"><i class="fa-solid fa-truck-fast"></i></div>
                     <h3>1. Penyelamatan</h3>
-                    <p>Kami mengumpulkan bahan surplus berkualitas dari petani lokal, kafe, dan toko roti.</p>
+                    <p>Kami mengumpulkan bahan surplus berkualitas dari toko buah atau sayur, kafe, dan toko lainnya.</p>
                 </div>
                 <div class="proses-step fade-in" style="transition-delay: 200ms;">
                     <div class="proses-icon"><i class="fa-solid fa-microscope"></i></div>
@@ -639,22 +763,24 @@
                 <div class="proses-step fade-in" style="transition-delay: 400ms;">
                     <div class="proses-icon"><i class="fa-solid fa-recycle"></i></div>
                     <h3>4. Pengemasan</h3>
-                    <p>Produk Anda dikemas dalam kemasan 100% ramah lingkungan sebelum dikirim.</p>
+                    <p>Produk Anda dikemas dalam kemasan 100% ramah lingkungan dan dapat di daur ulang sebelum dikirim.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="cta">
-        <div class="container fade-in">
-            <h2>Bergabung dengan Revolusi Rasa.</h2>
-            <p>Jadilah yang pertama tahu tentang eksperimen terbaru kami dan dapatkan diskon 10% untuk pesanan pertama Anda.</p>
-            <form class="cta-form">
-                <input type="email" placeholder="Masukkan email Anda..." required>
-                <button type="submit" class="btn">Kirim</button>
-            </form>
-        </div>
-    </section>
+   <section id="cta">
+    <div class="container fade-in">
+        <h2>Tertarik dengan Eksperimen Kami?</h2>
+        <p>Hubungi kami langsung di WhatsApp untuk bertanya, memesan, atau bergabung dengan komunitas kami!</p>
+        
+        <a href="https://wa.me/6281293020551?text=Halo%20JunksLab,%20saya%20tertarik%20dengan%20produk%20Anda!" 
+           class="btn btn-cta-wa" 
+           target="_blank">
+           <i class="fa-brands fa-whatsapp"></i> Hubungi Kami di WhatsApp
+        </a>
+    </div>
+</section>
 
     <footer>
         <div class="container">
@@ -678,23 +804,24 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Legal</h4>
+                    <h4>Sang Pencipta</h4>
                     <ul>
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
-                        <li><a href="#">Kebijakan Pengembalian</a></li>
+                        <li><a href="#">M Yoga Nofan N</a></li>
+                        <li><a href="#">Faiz Rasyid</a></li>
+                        <li><a href="#">Jupiter Satria Putra</a></li>
+                        <li><a href="#">M Rafi Teugeuh</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Kontak</h4>
                     <ul>
                         <li><p>Jl. Ciganitri No,12 Apart Cigan Mantap agoy tampan dan ganteng bagaimac cara mengatasi error di </p></li>
-                        <li><p>hello@junkslab.id</p></li>
+                        <li><p>yoganofan2@gmail.com</p></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 JunksLab. All Rights Reserved. Dibuat dengan <i class="fa-solid fa-heart" style="color: #e25555;"></i> untuk planet.</p>
+                <p>&copy; 2025 JunksLab. <i class="fa-solid fa-heart" style="color: #e25555;"></i></p>
             </div>
         </div>
     </footer>
@@ -722,9 +849,44 @@
             threshold: 0.1 // Muncul saat 10% elemen terlihat
         });
 
-        // Ambil semua elemen dengan kelas .fade-in
         const elementsToFade = document.querySelectorAll('.fade-in');
         elementsToFade.forEach(el => observer.observe(el));
+
+
+        /* --- ▼▼▼ JAVASCRIPT BARU UNTUK MENU MOBILE ▼▼▼ --- */
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        const navLinksList = document.querySelectorAll('#nav-links li a'); // Ambil semua link
+
+        // Fungsi untuk mengganti ikon
+        function toggleIcon() {
+            const icon = navToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // Event listener untuk tombol toggle
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            toggleIcon();
+        });
+
+        // Event listener untuk setiap link di menu
+        // Ini akan menutup menu saat link di-klik (berguna untuk Single Page App)
+        navLinksList.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('nav-active')) {
+                    navLinks.classList.remove('nav-active');
+                    toggleIcon(); // Jangan lupa ganti ikonnya kembali
+                }
+            });
+        });
+        
     </script>
 
 </body>
