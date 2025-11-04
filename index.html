@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JunksLab - From Waste to Wonder</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- [ ROOT & RESET ] --- */
+        :root {
+            --color-primary-green: #2D6A4F; /* Hijau tua khas alam */
+            --color-secondary-teal: #2D6A4F; /* Aksen teal lab */
+            --color-accent-yellow: #F2C94C; /* Aksen 'energi' */
+            --color-bg-light: #FDFDFD;      /* Putih bersih */
+            --color-bg-natural: #F4F1ED;   /* Krem/Beige 'daur ulang' */
+            --color-text-dark: #222222;
+            --color-text-light: #555555;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text-dark);
+            background-color: var(--color-bg-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- [ STYLE UTAMA ] --- */
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--color-primary-green);
+        }
+
+        h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+        h2 { font-size: 2.5rem; margin-bottom: 30px; text-align: center; }
+        h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        
+        p {
+            color: var(--color-text-light);
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary-green);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #24553f;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-primary-green);
+            border: 2px solid var(--color-primary-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-primary-green);
+            color: #fff;
+        }
+
+        /* --- [ SECTIONS ] --- */
+        section {
+            padding: 100px 0;
+            overflow: hidden; /* Untuk animasi */
+        }
+
+ /* --- [ NAVBAR KEREN - VERSI BARU ] --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff; /* Warna background navbar */
+    z-index: 1000;
+    padding: 12px 0; /* Sedikit lebih tipis */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: all 0.4s ease-in-out; /* Transisi lebih halus untuk shadow/padding */
+}
+
+.navbar.scrolled {
+    padding: 8px 0; /* Padding lebih kecil saat discroll */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Shadow lebih kuat saat discroll */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex; /* Agar logo gambar terpusat jika ada teks tambahan */
+    align-items: center;
+    text-decoration: none;
+    height: 39px; /* Batasi tinggi logo container */
+}
+
+.nav-logo .logo-img {
+    height: 650%; /* Gambar logo akan mengisi tinggi container */
+    width: auto;
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1)); /* Sedikit efek shadow pada logo */
+}
+
+/* Jika Anda ingin tetap ada teks logo di samping gambar, uncomment ini */
+/* .nav-logo span {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primary-green);
+    margin-left: 10px;
+} */
+
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center; /* Memastikan semua item sejajar */
+}
+
+.nav-links li {
+    margin-left: 35px; /* Jarak antar link lebih lebar */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-text-dark);
+    font-weight: 600;
+    font-family: var(--font-heading);
+    position: relative;
+    padding-bottom: 5px; /* Memberi ruang untuk underline */
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary-green); /* Warna teks berubah saat hover */
+}
+
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px; /* Garis underline lebih tebal */
+    background: var(--color-secondary-teal); /* Warna underline aksen */
+    transition: width .3s ease-out; /* Animasi underline lebih halus */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 2px; /* Sedikit bulat di ujung */
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Tombol Shop Now di Navbar */
+.nav-links .btn-primary {
+    background-color: var(--color-primary-green);
+    color: #fff;
+    padding: 10px 25px; /* Ukuran tombol disesuaikan */
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(45, 106, 79, 0.3); /* Shadow untuk tombol */
+    transition: all 0.3s ease;
+    margin-left: 20px; /* Jarak dari link terakhir */
+}
+
+.nav-links .btn-primary:hover {
+    background-color: #24553f; /* Warna sedikit lebih gelap saat hover */
+    transform: translateY(-2px); /* Efek 'angkat' */
+    box-shadow: 0 6px 15px rgba(45, 106, 79, 0.4);
+}
+
+/* Menghilangkan efek underline untuk tombol */
+.nav-links .btn-primary::after {
+    display: none;
+}
+
+/* --- [ HERO SECTION ] --- */
+#hero {
+    /* Mengganti background-color dengan gambar Anda */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('Gemini_Generated_Image_f0k59ef0k59ef0k5.png'); /* <-- GANTI NAMA FILE DI SINI */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    padding-top: 200px; /* Space untuk navbar */
+    padding-bottom: 100px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+#hero .container {
+    /* Mengubah layout dari side-by-side menjadi satu kolom di tengah */
+    text-align: center;
+    width: 90%;
+    max-width: 800px; /* Batasi lebar teks agar mudah dibaca */
+    margin: 0 auto;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+/* .hero-image {  <-- BLOK INI BISA DIHAPUS KARENA HTML-NYA SUDAH HILANG
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img { <-- BLOK INI BISA DIHAPUS
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+*/
+
+.hero-text .btn {
+    margin: 10px;
+}
+
+/* ▼▼▼ BLOK BARU (PENTING) ▼▼▼ */
+/* Ini mengubah warna teks di hero agar kontras dengan background */
+.hero-text h1,
+.hero-text .subtitle,
+.hero-text .slogan {
+    color: #FFFFFF; /* Teks jadi putih */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Bayangan agar terbaca */
+}
+
+/* Mengubah style tombol kedua agar terlihat di background gelap */
+.hero-text .btn-secondary {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+
+.hero-text .btn-secondary:hover {
+    background-color: #FFFFFF;
+    color: var(--color-primary-green);
+}
+
+        /* --- [ MISI KAMI (FITUR) SECTION ] --- */
+        #misi {
+            background-color: var(--color-bg-light);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+        }
+        
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--color-secondary-teal);
+            margin-bottom: 20px;
+        }
+
+        /* --- [ PRODUK SECTION ] --- */
+        #produk {
+            background-color: var(--color-bg-natural);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-info .ingredient-tag {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-secondary-teal);
+            background-color: rgba(64, 145, 108, 0.1);
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .product-info h3 {
+            color: var(--color-text-dark);
+        }
+
+        /* --- [ PROSES KAMI SECTION ] --- */
+        #proses {
+            text-align: center;
+        }
+        
+        .proses-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 80px;
+            position: relative;
+        }
+        
+        /* Garis konektor */
+        .proses-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 40px; /* Setengah dari tinggi ikon */
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background-color: #e0e0e0;
+            border-style: dashed;
+            z-index: -1;
+        }
+
+        .proses-step {
+            flex: 1;
+            text-align: center;
+            max-width: 250px;
+            position: relative;
+        }
+        
+        .proses-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--color-primary-green);
+            color: #fff;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border: 5px solid var(--color-bg-natural);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .proses-step h3 {
+            color: var(--color-text-dark);
+        }
+
+        /* --- [ CTA SECTION ] --- */
+        #cta {
+            background-color: var(--color-secondary-teal);
+            text-align: center;
+            color: #fff;
+        }
+        
+        #cta h2 {
+            color: #fff;
+        }
+        
+        #cta p {
+            color: #fff;
+            opacity: 0.9;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+        
+        .cta-form {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .cta-form input[type="email"] {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+        
+        .cta-form .btn {
+            background-color: var(--color-accent-yellow);
+            color: var(--color-text-dark);
+        }
+        
+        .cta-form .btn:hover {
+            background-color: #e0b845;
+        }
+
+        /* --- [ FOOTER ] --- */
+        footer {
+            background-color: var(--color-text-dark);
+            color: #f0f0f0;
+            padding: 60px 0 30px 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h4 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-col p {
+            color: #ccc;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col a {
+            text-decoration: none;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-col a:hover {
+            color: var(--color-accent-yellow);
+        }
+        
+        .social-icons a {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--color-secondary-teal);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* --- [ ANIMASI SCROLL ] --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+<a href="#hero" class="nav-logo">
+    <img src="junkslabnavbar-removebg-preview.png" alt="JunksLab Logo" class="logo-img">
+</a>            <ul class="nav-links">
+                <li><a href="#misi">Misi Kami</a></li>
+                <li><a href="#produk">Produk</a></li>
+                <li><a href="#proses">Proses</a></li>
+                <li><a href="#cta" class="btn btn-primary">Shop Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero">
+    <div class="container">
+        <div class="hero-text fade-in">
+            <span class="subtitle">FROM WASTE TO WONDER</span>
+            <h1>Makanan Sisa? Bukan, Ini Eksperimen Rasa.</h1>
+            <p class="slogan">Kami mengubah surplus pangan—seperti pisang terlalu matang dan ampas kopi—menjadi cookies, snack, dan minuman lezat yang belum pernah Anda coba.</p>
+            <a href="#produk" class="btn btn-primary">Cicipi Eksperimen Kami</a>
+            <a href="#misi" class="btn btn-secondary">Pelajari Misi Kami</a>
+        </div>
+    </div>
+</section>
+
+    <section id="misi">
+        <div class="container">
+            <h2 class="fade-in">Kenapa JunksLab?</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in" style="transition-delay: 100ms;">
+                    <i class="fa-solid fa-leaf"></i>
+                    <h3>Selamatkan Planet</h3>
+                    <p>Setiap gigitan membantu mengurangi limbah pangan. Kami mengambil bahan yang 'tidak cantik' dan memberinya kehidupan kedua.</p>
+                </div>
+                <div class="feature-card fade-in" style="transition-delay: 200ms;">
+                    <i class="fa-solid fa-vial-virus"></i>
+                    <h3>Inovasi Dapur Lab</h3>
+                    <p>Rasa adalah eksperimen. Tim kami terus meneliti untuk menciptakan kombinasi unik dari bahan-bahan yang diselamatkan.</p>
+                </div>
+                <div class="feature-card fade-in" style="transition-delay: 300ms;">
+                    <i class="fa-solid fa-box-open"></i>
+                    <h3>100% Eco-Packaging</h3>
+                    <p>Bukan hanya isinya, kemasan kami pun ramah lingkungan, terbuat dari bahan daur ulang dan biodegradable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="produk">
+        <div class="container">
+            <h2 class="fade-in">Eksperimen Terbaru Kami</h2>
+            <div class="product-grid">
+                <div class="product-card fade-in">
+                    <img src="junkslabnavbar-removebg-preview.png" alt="Cookie JunksLab">
+                    <div class="product-info">
+                        <span class="ingredient-tag">Dari Ampas Kopi</span>
+                        <h3>Choco-Coffee "Ground-Up" Cookie</h3>
+                        <p>Kue cokelat kaya rasa dengan tendangan kafein halus, dibuat dari ampas kopi sisa seduhan.</p>
+                    </div>
+                </div>
+                <div class="product-card fade-in" style="transition-delay: 100ms;">
+                    <img src="cookie_boxes.webp" alt="Snack JunksLab">
+                    <div class="product-info">
+                        <span class="ingredient-tag">Dari Pisang Kemata_ngan</span>
+                        <h3>Banana "Re-Born" Granola</h3>
+                        <p>Granola renyah dengan rasa manis alami dari pisang yang terlalu matang, tanpa tambahan gula.</p>
+                    </div>
+                </div>
+                <div class="product-card fade-in" style="transition-delay: 200ms;">
+                    <img src="junkslabnavbar-removebg-preview.png" alt="Minuman JunksLab">
+                    <div class="product-info">
+                        <span class="ingredient-tag">Dari Sisa Roti Tawar</span>
+                        <h3>"Bread-Cycle" Cinnamon Bites</h3>
+                        <p>Potongan roti tawar sisa yang di-oven-bake menjadi camilan sinamon renyah dan adiktif.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="proses">
+        <div class="container">
+            <h2 class="fade-in">Proses di Laboratorium Kami</h2>
+            <p style="max-width: 600px; margin: 0 auto 60px auto;" class="fade-in">Dari limbah menjadi keajaiban, semua dimulai dengan sains (dan sedikit cinta).</p>
+            
+            <div class="proses-wrapper">
+                <div class="proses-step fade-in" style="transition-delay: 100ms;">
+                    <div class="proses-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h3>1. Penyelamatan</h3>
+                    <p>Kami mengumpulkan bahan surplus berkualitas dari petani lokal, kafe, dan toko roti.</p>
+                </div>
+                <div class="proses-step fade-in" style="transition-delay: 200ms;">
+                    <div class="proses-icon"><i class="fa-solid fa-microscope"></i></div>
+                    <h3>2. Eksperimen</h3>
+                    <p>Tim "ilmuwan rasa" kami menguji, meracik, dan menciptakan resep inovatif di dapur lab.</p>
+                </div>
+                <div class="proses-step fade-in" style="transition-delay: 300ms;">
+                    <div class="proses-icon"><i class="fa-solid fa-cookie-bite"></i></div>
+                    <h3>3. Penciptaan</h3>
+                    <p>Resep terbaik diproduksi menjadi batch kecil untuk menjaga kualitas dan kesegaran.</p>
+                </div>
+                <div class="proses-step fade-in" style="transition-delay: 400ms;">
+                    <div class="proses-icon"><i class="fa-solid fa-recycle"></i></div>
+                    <h3>4. Pengemasan</h3>
+                    <p>Produk Anda dikemas dalam kemasan 100% ramah lingkungan sebelum dikirim.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta">
+        <div class="container fade-in">
+            <h2>Bergabung dengan Revolusi Rasa.</h2>
+            <p>Jadilah yang pertama tahu tentang eksperimen terbaru kami dan dapatkan diskon 10% untuk pesanan pertama Anda.</p>
+            <form class="cta-form">
+                <input type="email" placeholder="Masukkan email Anda..." required>
+                <button type="submit" class="btn">Kirim</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4><i class="fa-solid fa-flask"></i> JunksLab</h4>
+                    <p>"From Waste to Wonder." Misi kami adalah membuat makanan lezat sambil berbuat baik untuk bumi.</p>
+                    <div class="social-icons" style="margin-top: 20px;">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Jelajahi</h4>
+                    <ul>
+                        <li><a href="#misi">Misi Kami</a></li>
+                        <li><a href="#produk">Produk</a></li>
+                        <li><a href="#">Toko</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Pengembalian</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontak</h4>
+                    <ul>
+                        <li><p>Jl. Ciganitri No,12 Apart Cigan Mantap agoy tampan dan ganteng bagaimac cara mengatasi error di </p></li>
+                        <li><p>hello@junkslab.id</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 JunksLab. All Rights Reserved. Dibuat dengan <i class="fa-solid fa-heart" style="color: #e25555;"></i> untuk planet.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Skrip untuk Navbar 'scrolled' ---
+        const navbar = document.getElementById('navbar');
+        window.onscroll = () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
+
+        // --- Skrip untuk Animasi Fade-in saat Scroll ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Hanya animasikan sekali
+                }
+            });
+        }, {
+            threshold: 0.1 // Muncul saat 10% elemen terlihat
+        });
+
+        // Ambil semua elemen dengan kelas .fade-in
+        const elementsToFade = document.querySelectorAll('.fade-in');
+        elementsToFade.forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
